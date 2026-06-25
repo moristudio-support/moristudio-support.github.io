@@ -7,6 +7,7 @@ interface App {
   description: string
   icon?: string
   image?: string
+  badge?: string
   gradient: string
   url: string
 }
@@ -25,7 +26,8 @@ const appCategories: AppCategory[] = [
         description: '고민될 때 소라고동을\n당기면 답을 들려줍니다.',
         image: '/images/ic-sora.png',
         gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
-        url: 'https://example.com/sora',
+        url: '',
+        badge: 'Coming Soon',
       },
       {
         name: '연락처 백업',
@@ -159,20 +161,41 @@ export default function Home() {
           <div className={styles.appCategory}>
             <h3 className={styles.appCategoryLabel}>Mobile</h3>
             <div className={styles.appGrid4}>
-              {appCategories[0].items.map((app) => (
-                <a key={app.name} href={app.url} target="_blank" rel="noopener noreferrer" className={styles.appCard}>
-                  {app.image ? (
-                    <img src={app.image} alt={app.name} className={styles.appIconImg} />
-                  ) : (
-                    <div className={styles.appIcon} style={{ background: app.gradient }}>
-                      <span>{app.icon}</span>
-                    </div>
-                  )}
-                  <h3 className={styles.appName}>{app.name}</h3>
-                  <p className={styles.appDesc}>{app.description}</p>
-                  <span className={styles.appLink}>자세히 보기 →</span>
-                </a>
-              ))}
+              {appCategories[0].items.map((app) => {
+                const card = (
+                  <>
+                    {app.image ? (
+                      <img src={app.image} alt={app.name} className={styles.appIconImg} />
+                    ) : (
+                      <div className={styles.appIcon} style={{ background: app.gradient }}>
+                        <span>{app.icon}</span>
+                      </div>
+                    )}
+                    <h3 className={styles.appName}>{app.name}</h3>
+                    <p className={styles.appDesc}>{app.description}</p>
+                    <span className={styles.appLink}>{app.url ? '자세히 보기 →' : '\u00A0'}</span>
+                  </>
+                )
+                const cardEl = app.url ? (
+                  <a href={app.url} target="_blank" rel="noopener noreferrer" className={styles.appCard}>
+                    {card}
+                  </a>
+                ) : (
+                  <div className={styles.appCard}>
+                    {card}
+                  </div>
+                )
+                return (
+                  <div key={app.name} className={styles.appCardWrap}>
+                    {cardEl}
+                    {app.badge && (
+                      <div className={styles.badgeOverlay}>
+                        <span className={styles.badge}>{app.badge}</span>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
 
