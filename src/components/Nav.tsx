@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Nav.module.css'
+import logo from '../assets/images/ic-logo.png'
 
 export default function Nav() {
   const location = useLocation()
@@ -19,7 +20,7 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <Link to="/" className={styles.logo}>Mori Studio</Link>
+        <Link to="/" className={styles.logo}><img src={logo} alt="Mori Studio" className={styles.logoImg} /><span className={styles.logoText}>Mori Studio</span></Link>
         <div className={styles.links}>
           <button type="button" onClick={() => scrollTo('products')}>Products</button>
           <button type="button" onClick={() => scrollTo('skills')}>Skills</button>

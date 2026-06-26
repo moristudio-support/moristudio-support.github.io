@@ -33,8 +33,7 @@ const appCategories: AppCategory[] = [
         description: '고민될 때 소라고동을\n당기면 답을 들려줍니다.',
         image: icSora,
         gradient: 'linear-gradient(135deg, #007aff, #5856d6)',
-        url: '',
-        badge: 'Coming Soon',
+        url: 'https://play.google.com/store/apps/details?id=com.canbe.sora',
       },
       {
         name: '연락처 백업',
@@ -278,12 +277,12 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>Contact</h2>
 
           <p className={styles.contactDesc}>프로젝트 제안, 협업 문의, 기타 궁금한 점이 있으시면 연락해 주세요.</p>
-          <a href="mailto:contact@example.com" className={styles.contactLink}>
+          <a href="mailto:icanbee.official@gmail.com" className={styles.contactLink}>
             <svg className={styles.contactIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M22 4L12 13L2 4" />
             </svg>
-            <span>contact@example.com</span>
+            <span>icanbee.official@gmail.com</span>
           </a>
         </div>
       </section>
